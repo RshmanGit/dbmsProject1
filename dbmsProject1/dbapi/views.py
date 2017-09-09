@@ -65,3 +65,18 @@ def subspage(request):
         context = {}
 
     return HttpResponse(html.render(context, request))
+
+
+def channelpage(request):
+
+    user = curUser
+    context = {}
+    html = loader.get_template("dbapi/mychannels.html")
+
+    if user:
+        pass
+
+    else:
+        pass
+
+    return HttpResponse(html.render(context, request))

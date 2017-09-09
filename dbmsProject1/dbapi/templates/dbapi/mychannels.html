@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+    
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
+    </head>
+    
+    
+    <body>
+        
+        <nav class="navbar navbar-light" style="background-color: #f44336">
+            <a class="navbar-brand" href="/">
+                <button type="button" class="btn btn-dark">VIDmod</button>
+            </a>
+            <span class="navbar-text">
+                logged in as @{{ user.name }}
+            </span>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="/home">Home <span class="sr-only"></span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/subscription">Subscription</a>
+                    </li>
+                    <li class="nav-item active">
+                        <a class="nav-link" href="/mychannels">Channel</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+        
+        <br><br><br>
+        
+        <div class="container">
+            <div class="card">
+                
+                <div class="card-header">
+                    Channel Management tools:
+                </div>
+                
+                <div class="card-body">
+                    <div id="accordion" role="tablist">
+                        
+                        <div class="card">
+                            <div class="card-header" role="tab" id="headingOne">
+                                <h5 class="mb-0">
+                                    <a data-toggle="collapse" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                        Your channels:
+                                    </a>
+                                </h5>
+                            </div>
+
+                            <div id="collapseOne" class="collapse show" role="tabpanel" aria-labelledby="headingOne" data-parent="#accordion">
+                                <div class="card-body">
+                                    <h6>The channels that are owned under your user-name:</h6> 
+                                </div>
+
+                                <div class="list-group">
+                                    <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
+                                        <div class="d-flex w-100 justify-content-between">
+                                            <h5 class="mb-1">Channel title</h5>
+                                        </div>
+                                        <p class="mb-1">Channel description</p>
+                                        <small>upload video to this channel</small>
+                                    </a>
+                                </div>
+                            </div>
+                            
+                        </div>
+
+                        <div class="card">
+                            <div class="card-header" role="tab" id="headingTwo">
+                                <h5 class="mb-0">
+                                    <a class="collapsed" data-toggle="collapse" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                        Create a channel:
+                                    </a>
+                                </h5>
+                            </div>
+                            <div id="collapseTwo" class="collapse" role="tabpanel" aria-labelledby="headingTwo" data-parent="#accordion">
+                                <div class="card-body">
+                                    <h6>Fill in the details and you'll be on your way to creating a new channel.</h6>
+                                    <br>
+                                    <form method="get" action="#">
+                                        <div class="form-group">
+                                            <label for="exampleFormControlInput1">Channel Name</label>
+                                            <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="eg: PewDiePie" name="channelname">
+                                        </div>
+                                        
+                                        <div class="form-group">
+                                            <label for="exampleFormControlTextarea1">Channel Description</label>
+                                            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="description"></textarea>
+                                        </div>
+                                        
+                                        <div class="form-group">
+                                            <label for="exampleFormControlSelect1">Select your advertiser</label>
+                                            <select class="form-control" id="exampleFormControlSelect1" name="advertiser">
+                                                <option>1</option>
+                                                <option>2</option>
+                                                <option>3</option>
+                                                <option>4</option>
+                                                <option>5</option>
+                                            </select>
+                                        </div>
+  
+                                        <button type="submit" class="btn btn-primary">Submit</button>
+                                        
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="card">
+                            <div class="card-header" role="tab" id="headingTwo">
+                                <h5 class="mb-0">
+                                    <a class="collapsed" data-toggle="collapse" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                                        Upload a video:
+                                    </a>
+                                </h5>
+                            </div>
+                            <div id="collapseThree" class="collapse" role="tabpanel" aria-labelledby="headingThree" data-parent="#accordion">
+                                <div class="card-body">
+                                    <h6>Fill in the details to upload to a video</h6>
+                                    <br>
+                                    <form method="get" action="#">
+                                        <div class="form-group">
+                                            <label for="exampleFormControlInput1">Video Name</label>
+                                            <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="eg: PewDiePie" name="videotitle">
+                                        </div>
+                                        
+                                        <div class="form-group">
+                                            <label for="exampleFormControlTextarea1">Channel Description</label>
+                                            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="videodescription"></textarea>
+                                        </div>
+                                        
+                                        <div class="form-group">
+                                            <label for="exampleFormControlSelect1">Select your advertiser</label>
+                                            <select class="form-control" id="exampleFormControlSelect1" name="channelid">
+                                                <option>1</option>
+                                                <option>2</option>
+                                                <option>3</option>
+                                                <option>4</option>
+                                                <option>5</option>
+                                            </select>
+                                        </div>
+  
+                                        <button type="submit" class="btn btn-primary">Submit</button>
+                                        
+                                </form>
+                                </div>
+                                
+                            </div>
+                        </div>
+                    
+                    </div>
+                    
+                    
+                </div>
+            </div>    
+        </div>
+        
+        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js" integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1" crossorigin="anonymous"></script>
+    </body>
+</html>
