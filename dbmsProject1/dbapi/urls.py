@@ -12,6 +12,6 @@ urlpatterns = [
     url(r'^upload-video/',views.uploadvideo),
     url(r'^channel/(?P<channelId>[0-9]+)/$', views.channeldesc),
     url(r'^subscribe/(?P<channelId>[0-9]+)/$', views.subscribe),
-    url(r'^register/', views.register),
+    url(r'^register/$', views.register),
     url(r'^register/registercomplete/', views.register_complete)
 ]
