@@ -62,13 +62,37 @@
                                 </div>
 
                                 <div class="list-group">
-                                    <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
-                                        <div class="d-flex w-100 justify-content-between">
-                                            <h5 class="mb-1">Channel title</h5>
-                                        </div>
-                                        <p class="mb-1">Channel description</p>
-                                        <small>upload video to this channel</small>
-                                    </a>
+                                    
+                                    <?-for loop starts -?>
+                                    
+                                    {% if all_channels %}
+                                    
+                                        {% for channel in all_channels %}
+
+                                            <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
+                                                <div class="d-flex w-100 justify-content-between">
+                                                    <h5 class="mb-1">{{ channel.name }}</h5>
+                                                </div>
+                                                <p class="mb-1">This channel was created by you. I could only come with this description because I forgot to add description field in the table and i hardcoded this.</p>
+                                                <small>upload video to this channel</small>
+                                            </a>
+
+                                        {% endfor %}
+                                        
+                                    {% else %}
+                                            
+                                            <a class="list-group-item list-group-item-action flex-column align-items-start list-group-item-danger">
+                                                <div class="d-flex w-100 justify-content-between">
+                                                    <h5 class="mb-1">Nothing to display</h5>
+                                                </div>
+                                                <p class="mb-1">You currently own no channels</p>
+                                                <small>Go to create channel to get one.</small>
+                                            </a>
+                                        
+                                    {% endif %}
+                                        
+                                    <?-for loop end -?>
+                                    
                                 </div>
                             </div>
                             
@@ -86,10 +110,10 @@
                                 <div class="card-body">
                                     <h6>Fill in the details and you'll be on your way to creating a new channel.</h6>
                                     <br>
-                                    <form method="get" action="#">
+                                    <form method="get" action="/create-channel">
                                         <div class="form-group">
                                             <label for="exampleFormControlInput1">Channel Name</label>
-                                            <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="eg: PewDiePie" name="channelname">
+                                            <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="eg: PewDiePie" name="channelname">
                                         </div>
                                         
                                         <div class="form-group">
@@ -100,11 +124,20 @@
                                         <div class="form-group">
                                             <label for="exampleFormControlSelect1">Select your advertiser</label>
                                             <select class="form-control" id="exampleFormControlSelect1" name="advertiser">
-                                                <option>1</option>
-                                                <option>2</option>
-                                                <option>3</option>
-                                                <option>4</option>
-                                                <option>5</option>
+                                                <option>none</option>
+                                                
+                                                <?- start loop -?>
+                                                
+                                                {% if all_adverts %}
+                                                    
+                                                    {% for advert in all_adverts %}
+                                                        <option>{{ advert.name }}</option>
+                                                    {% endfor %}
+                                                
+                                                {% endif %}
+                                                
+                                                <?- end loop -?>
+                                                
                                             </select>
                                         </div>
   
@@ -127,28 +160,48 @@
                                 <div class="card-body">
                                     <h6>Fill in the details to upload to a video</h6>
                                     <br>
-                                    <form method="get" action="#">
+                                    <form method="get" action="/upload-video">
                                         <div class="form-group">
                                             <label for="exampleFormControlInput1">Video Name</label>
-                                            <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="eg: PewDiePie" name="videotitle">
+                                            <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="eg: PewDiePie" name="videotitle">
                                         </div>
                                         
                                         <div class="form-group">
-                                            <label for="exampleFormControlTextarea1">Channel Description</label>
+                                            <label for="exampleFormControlTextarea1">Video Description</label>
                                             <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="videodescription"></textarea>
                                         </div>
                                         
                                         <div class="form-group">
-                                            <label for="exampleFormControlSelect1">Select your advertiser</label>
+                                            <label for="exampleFormControlSelect1">Select your channel</label>
                                             <select class="form-control" id="exampleFormControlSelect1" name="channelid">
-                                                <option>1</option>
-                                                <option>2</option>
-                                                <option>3</option>
-                                                <option>4</option>
-                                                <option>5</option>
+                                                <?- start loop -?>
+                                                    <option> Choose a channel</option>
+                                                {% if all_channels %}
+                                                    {% for channel in all_channels %}
+                                                        <option> {{ channel.name }} </option>
+                                                    {% endfor %}
+                                                {% else %}
+                                                    <div class="alert alert-danger" role="alert">Please create a channel first.</div>
+                                                    <option> No_channels_available </option>
+                                                {% endif %}
+                                                
                                             </select>
                                         </div>
-  
+    
+                                        <div class="form-group">
+                                            <label for="exampleFormControlSelect1">Select your genre</label>
+                                            <select class="form-control" id="exampleFormControlSelect1" name="genreid">
+                                                <?- start loop -?>
+                                                    <option> Choose a Genre</option>
+                                                {% if all_genre %}
+                                                    {% for genre in all_genre %}
+                                                        <option> {{ genre.name }} </option>
+                                                    {% endfor %}
+                                                {% endif %}
+                                                
+                                            </select>
+                                        </div>
+                                        
                                         <button type="submit" class="btn btn-primary">Submit</button>
                                         
                                 </form>
