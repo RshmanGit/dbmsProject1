@@ -260,3 +260,24 @@ def register_complete(request):
     html = loader.get_template("dbapi/index.html")
     context = {}
     return HttpResponse(html.render(context, request))
+
+
+def videodesc(request, videoId):
+    user = curUser
+    pagesvideo = video.objects.filter(videoId=videoId)[0]
+    pageschannel = channel.objects.filter(channelId=pagesvideo.channelId.channelId)[0]
+
+    if user:
+        html = loader.get_template("dbapi/video.html")
+        subscribed = False
+        subChannels = subscription.objects.filter(channelId=pageschannel)
+        for sub in subChannels:
+            if (sub.userId == user):
+                subscribed = True
+        context = {'video': pagesvideo, 'channel' : pageschannel, 'user': user, 'subscribed': subscribed}
+
+    else:
+        html = loader.get_template("dbapi/index.html")
+        context = {}
+    return HttpResponse(html.render(context, request))
+

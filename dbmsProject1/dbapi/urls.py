@@ -13,5 +13,6 @@ urlpatterns = [
     url(r'^channel/(?P<channelId>[0-9]+)/$', views.channeldesc),
     url(r'^subscribe/(?P<channelId>[0-9]+)/$', views.subscribe),
     url(r'^register/$', views.register),
-    url(r'^register/registercomplete/', views.register_complete)
+    url(r'^register/registercomplete/', views.register_complete),
+    url(r'video/(?P<videoId>[0-9]+)/$', views.videodesc)
 ]
