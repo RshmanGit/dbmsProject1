@@ -42,18 +42,26 @@
             <h1> {{ channel.name }} </h1>
             
             <br>
+                    
+            <table>
             
-            {% if subscribed %}
-            
-            <button type="button" class="btn btn-secondary">Subscribed</button>
-            
-            {% else %}
-            
-            <a href="/subscribe/{{ channel.channelId }}"><button type="button" class="btn btn-danger" > Subscribe</button></a>
-            
-            {% endif %}
+            <tr>    
+                <td>
+                    {% if subscribed %}
+                        <button type="button" class="btn btn-secondary">Subscribed</button>
+                    {% else %}
+                        <a href="/subscribe/{{ channel.channelId }}"><button type="button" class="btn btn-danger" > Subscribe</button></a>
+                    {% endif %}
+                </td>
+                <td>  
+                    <button type="button" class="btn btn-info">{{ channel.ownerId.followers }}</button>                    
+                </td>
+            </tr>
+                
+            </table>
             
             <br>
+            
             <hr>
             {% if user = channel.ownerId%}
                 <br>
@@ -148,7 +156,7 @@
                     </div>
                     <ul class="list-group list-group-flush">
                         <li class="list-group-item">Views: {{ video.views }}</li>
-                        <li class="list-group-item">Genre: {{ video.genre }}</li>
+                        <li class="list-group-item">Genre: {{ video.genreId.name }}</li>
                     </ul>
                     <div class="card-body">
                         <a href="/channel/{{ video.channelId.channelId }}/" class="card-link">{{ video.channelId.name }}</a>

@@ -38,6 +38,25 @@
         <br><br><br>
         
         <div class="container">
+        
+            <div class="card">
+                <div class="card-header">
+                    Your Status:
+                </div>
+                
+                <div class="card-body">
+                    
+                    <table> <tr> <td>Followers: {{user.followers}}</td> <td>Follows: {{user.follows}}</td> </tr></table>
+                
+                </div>
+                
+            </div>
+        
+        </div>
+        
+        <br>
+        
+        <div class="container">
             <div class="card">
                 
                 <div class="card-header">
@@ -74,7 +93,7 @@
                                                     <h5 class="mb-1">{{ channel.name }}</h5>
                                                 </div>
                                                 <p class="mb-1">This channel was created by you. I could only come with this description because I forgot to add description field in the table and i hardcoded this.</p>
-                                                <small>upload video to this channel</small>
+                                                <small href="/channel/{{ channel.channelId }}/">upload video to this channel</small>
                                             </a>
 
                                         {% endfor %}
